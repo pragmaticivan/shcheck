@@ -2,10 +2,10 @@
 set -e
 
 TAR_FILE="/tmp/shcheck.tar.gz"
-DOWNLOAD_URL="https://github.com/caarlos0/shcheck/releases/download"
+DOWNLOAD_URL="https://github.com/pragmaticivan/shcheck/releases/download"
 
 get_latest() {
-	url="https://api.github.com/repos/caarlos0/shcheck/releases/latest"
+	url="https://api.github.com/repos/pragmaticivan/shcheck/releases/latest"
 	if test -n "$GITHUB_TOKEN"; then
 		curl --fail -sSL -H "Authorization: token $GITHUB_TOKEN" "$url"
 	else
@@ -22,7 +22,7 @@ last_version() {
 download() {
 	test -z "$VERSION" && VERSION="$(last_version)"
 	test -z "$VERSION" && {
-		echo "Unable to get caarlos0/shcheck version." >&2
+		echo "Unable to get pragmaticivan/shcheck version." >&2
 		get_latest
 		exit 1
 	}
